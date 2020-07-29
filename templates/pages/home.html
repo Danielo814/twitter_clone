@@ -1,6 +1,15 @@
-{% extends 'base.html' %} {% block content %} Welcome to Tweetme
+{% extends 'base.html' %} 
 
-<div id="tweets">
+{% block content %} 
+<div class="row text-center">
+  <div class="col">
+    <h1>Welcome to Tweetme</h1>
+
+  </div>
+</div>
+
+
+<div class="row" id="tweets">
   Loading..
 </div>
 
@@ -18,7 +27,7 @@
   function handleDidLike(tweet_id, currentCount) {
       console.log(tweet_id, currentCount)
       currentCount++
-      
+
   }
   function likeBtn(tweet) {
     return (
@@ -31,7 +40,7 @@
   }
   function formatTweetElement(tweet) {
     var formattedTweet =
-      "<div class='mb-4 tweet' id='" +
+      "<div class='mb-4 col-12 col-md-10 mx-auto py-3 border rounded tweet' id='" +
       tweet.id +
       "'><p>" +
       tweet.content +
