@@ -15,8 +15,19 @@
   const method = "GET";
   const url = "/tweets";
   const responseType = "json";
-  function likeBtn() {
-      return "<button class='btn btn-primary'>Like</button>"
+  function handleDidLike(tweet_id, currentCount) {
+      console.log(tweet_id, currentCount)
+      currentCount++
+      
+  }
+  function likeBtn(tweet) {
+    return (
+      "<button class='btn btn-primary btn-small' onclick=handleDidLike(" +
+      tweet.id +
+      "," +
+      tweet.likes +
+      ")>" + tweet.likes + " Likes</button>"
+    );
   }
   function formatTweetElement(tweet) {
     var formattedTweet =
@@ -24,8 +35,9 @@
       tweet.id +
       "'><p>" +
       tweet.content +
-      likeBtn() +
-      "</p></div>";
+      "</p><div class='btn-group'>" +
+      likeBtn(tweet) +
+      "</div></div>";
     return formattedTweet;
   }
   xhr.responseType = responseType;
