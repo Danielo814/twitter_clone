@@ -28,6 +28,18 @@
 
   function handleTweetCreateFormDidSubmit(event) {
     event.preventDefault()
+    const myForm = event.target
+    const myFormData = new FormData(myForm)
+    const url = myForm.getAttribute("action")
+    const method = myForm.getAttribute('method')
+    const xhr = new XMLHttpRequest
+    xhr.open(method, url)
+    xhr.onload = function() {
+        const serverResponse = xhr.response
+        const tweetsEl = document.getElementById("tweets")
+        loadTweets(tweetsEl)
+    }
+    xhr.send(myFormData)
   }
   const tweetCreateFormEl = document.getElementById('tweet-create-form')
 
